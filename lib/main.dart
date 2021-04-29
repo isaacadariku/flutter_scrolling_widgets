@@ -10,7 +10,204 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Scrolling Widgets',
       debugShowCheckedModeBanner: false,
-      home: ListViewExample(),
+      home: Scrollbar(
+        isAlwaysShown: true,
+        // showTrackOnHover: true,
+        child: GridViewExample()),
+    );
+  }
+}
+
+class GridViewExample extends StatelessWidget {
+  final images = [
+    "https://training.zuri.team/Favicon.png",
+    "https://cdn.pixabay.com/photo/2019/04/04/15/17/smartphone-4103051__340.jpg",
+    "https://cdn.pixabay.com/photo/2016/02/19/11/19/computer-1209641__340.jpg",
+    "https://cdn.pixabay.com/photo/2017/09/25/11/55/cyberspace-2784907__340.jpg",
+    "https://cdn.pixabay.com/photo/2017/06/18/22/10/smartphone-2417419__340.png",
+    "https://cdn.hashnode.com/res/hashnode/image/upload/v1616259990246/o1IgkYlfA.jpeg",
+    "https://pbs.twimg.com/profile_images/1083303099886985222/4vHpZnpa_400x400.jpg",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Grid View Example'),
+        centerTitle: true,
+      ),
+      body: buildGridViewBuilderExample(),
+    );
+  }
+
+  Widget buildGridViewBuilderExample() {
+    return GridView.builder(
+      // scrollDirection: Axis.horizontal,
+      itemCount: images.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 1,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        return Image.network(images[index]);
+      },
+    );
+  }
+
+  Widget buildGridViewCountExample() {
+    return GridView.count(
+      // scrollDirection: Axis.horizontal,
+      crossAxisSpacing: 5,
+      mainAxisSpacing: 5,
+      crossAxisCount: 3,
+      children: [
+        Container(
+          color: Colors.yellow,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.blue,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.greenAccent,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.red,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.teal,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.indigo,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.blue,
+          height: 90,
+          width: 90,
+        ),
+        Container(
+          color: Colors.black12,
+          height: 90,
+          width: 90,
+        ),
+      ],
+    );
+  }
+
+  Widget buildMultipleRowsInsideAColumn() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              color: Colors.yellow,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.blue,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.greenAccent,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.red,
+              height: 90,
+              width: 90,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              color: Colors.teal,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.indigo,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.blue,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.black12,
+              height: 90,
+              width: 90,
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              color: Colors.yellow,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.blue,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.greenAccent,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.red,
+              height: 90,
+              width: 90,
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              color: Colors.teal,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.indigo,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.blue,
+              height: 90,
+              width: 90,
+            ),
+            Container(
+              color: Colors.black12,
+              height: 90,
+              width: 90,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
